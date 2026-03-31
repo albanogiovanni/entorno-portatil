@@ -4,7 +4,7 @@ title Preparación Inicial del USB Portable
 
 :: --- CONFIGURACIÓN DE NOMBRES ---
 set "ZIP_IDEA=intellij.zip"
-set "ZIP_GIT=git.zip"
+set "EXE_GIT=PortableGit.exe"
 set "ZIP_JDK=jdk.zip"
 set "ZIP_GH=gh.zip"
 
@@ -29,9 +29,11 @@ if exist "%ZIP_IDEA%" (
     echo [+] Descomprimiendo IntelliJ IDEA...
     powershell -command "Expand-Archive -Path '%ZIP_IDEA%' -DestinationPath 'tools\intellij' -Force"
 )
-if exist "%ZIP_GIT%" (
-    echo [+] Descomprimiendo Git Portable...
-    powershell -command "Expand-Archive -Path '%ZIP_GIT%' -DestinationPath 'tools\git' -Force"
+if exist "%EXE_GIT%" (
+    echo [+] Extrayendo Git Portable (autoextraible)...
+    "%EXE_GIT%" -o"tools\git" -y
+) else (
+    echo [!] No se encontro %EXE_GIT%. Descargalo desde git-scm.com
 )
 if exist "%ZIP_JDK%" (
     echo [+] Descomprimiendo JDK...
