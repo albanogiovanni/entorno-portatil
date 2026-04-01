@@ -30,7 +30,7 @@ if exist "%ZIP_IDEA%" (
     powershell -command "Expand-Archive -Path '%ZIP_IDEA%' -DestinationPath 'tools\intellij' -Force"
 )
 if exist "%EXE_GIT%" (
-    echo [+] Extrayendo Git Portable (autoextraible)...
+    echo [+] Extrayendo Git Portable
     "%EXE_GIT%" -o"tools\git" -y
 ) else (
     echo [!] No se encontro %EXE_GIT%. Descargalo desde git-scm.com
