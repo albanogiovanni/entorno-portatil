@@ -2,15 +2,24 @@
 setlocal enabledelayedexpansion
 title Preparación Inicial del USB Portable
 
-:: --- CONFIGURACIÓN DE NOMBRES ---
-set "ZIP_IDEA=intellij.zip"
-set "EXE_GIT=PortableGit.exe"
-set "ZIP_JDK=jdk.zip"
-set "ZIP_GH=gh.zip"
-
 echo ====================================================
 echo    ASISTENTE DE PREPARACION - ENTORNO PORTABLE
 echo ====================================================
+echo.
+
+:: --- DETECCIÓN AUTOMÁTICA DE ARCHIVOS ---
+echo [+] Detectando archivos descargados...
+
+:: Buscar archivos por patrón
+for %%f in (intellij*.zip) do set "ZIP_IDEA=%%f"
+for %%f in (PortableGit*.exe) do set "EXE_GIT=%%f"
+for %%f in (jdk*.zip) do set "ZIP_JDK=%%f"
+for %%f in (gh*.zip) do set "ZIP_GH=%%f"
+
+echo     IntelliJ: %ZIP_IDEA%
+echo     Git:      %EXE_GIT%
+echo     JDK:      %ZIP_JDK%
+echo     GitHub:   %ZIP_GH%
 echo.
 
 :: 1. Crear estructura de directorios
@@ -23,25 +32,34 @@ for %%d in (workspace data\idea data\gradle data\gh_config) do (
     if not exist "%%d" mkdir "%%d"
 )
 
-:: 2. Función de descompresión
+:: 2. Extracción de herramientas
 echo.
-if exist "%ZIP_IDEA%" (
+if defined ZIP_IDEA (
     echo [+] Descomprimiendo IntelliJ IDEA...
     powershell -command "Expand-Archive -Path '%ZIP_IDEA%' -DestinationPath 'tools\intellij' -Force"
+) else (
+    echo [!] No se encontro archivo intellij*.zip
 )
-if exist "%EXE_GIT%" (
-    echo [+] Extrayendo Git Portable
+
+if defined EXE_GIT (
+    echo [+] Extrayendo Git Portable (autoextraible)...
     "%EXE_GIT%" -o"tools\git" -y
 ) else (
-    echo [!] No se encontro %EXE_GIT%. Descargalo desde git-scm.com
+    echo [!] No se encontro archivo PortableGit*.exe
 )
-if exist "%ZIP_JDK%" (
+
+if defined ZIP_JDK (
     echo [+] Descomprimiendo JDK...
     powershell -command "Expand-Archive -Path '%ZIP_JDK%' -DestinationPath 'tools\jdk' -Force"
+) else (
+    echo [!] No se encontro archivo jdk*.zip
 )
-if exist "%ZIP_GH%" (
+
+if defined ZIP_GH (
     echo [+] Descomprimiendo GitHub CLI...
     powershell -command "Expand-Archive -Path '%ZIP_GH%' -DestinationPath 'tools\gh' -Force"
+) else (
+    echo [!] No se encontro archivo gh*.zip
 )
 
 :: 3. Parche automático de idea.properties

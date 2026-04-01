@@ -13,14 +13,16 @@ Este kit te permite llevar el entorno de trabajo completo de la cátedra en un U
 - `configurar_git_y_gh.bat`
 - `abrir_terminal.bat`
    
-### 2.  Descarga y coloca en la misma carpeta los siguientes archivos `.zip`:
+### 2.  Descarga y coloca en la misma carpeta los siguientes archivos:
 
-Renombrá los archivos como está indicados, así el script de inicialización los puede ubicar.
+Los archivos se detectan automáticamente por su nombre. Solo asegurate que empiecen con el prefijo correcto:
 
- -   **IntelliJ IDEA**: `intellij.zip` [Windows ZIP](https://www.jetbrains.com/idea/download/?section=windows)
- -   **Git Portable**: `PortableGit.exe` [64-bit Portable](https://git-scm.com/install/windows)
- -   **Oracle Java 25**: `jdk.zip` [Windows x64 ZIP](https://www.oracle.com/java/technologies/downloads/)
- -   **GitHub CLI**: `gh.zip` [Windows amd64 ZIP](https://github.com/cli/cli/releases/)
+ -   **IntelliJ IDEA**: `intellij*.zip` [Windows ZIP](https://www.jetbrains.com/idea/download/?section=windows)
+ -   **Git Portable**: `PortableGit*.exe` [64-bit Portable (autoextraíble)](https://git-scm.com/download/win)
+ -   **Oracle Java 25**: `jdk*.zip` [Windows x64 ZIP](https://www.oracle.com/java/technologies/downloads/)
+ -   **GitHub CLI**: `gh*.zip` [Windows amd64 ZIP](https://github.com/cli/cli/releases/)
+
+💡 **Ejemplo**: `intellij-2024.1.zip`, `PortableGit-2.48.0.exe`, `jdk-25_windows-x64.zip`, `gh_2.89.0_windows_amd64.zip`
     
 ### 3.  Ejecuta **`preparar_usb.bat`**. Este script:
  *   Creará la carpeta `tools/` y `data/`.
