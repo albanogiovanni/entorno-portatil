@@ -2,6 +2,8 @@
 
 Este kit te permite llevar el entorno de trabajo completo de la cátedra en un USB, listo para usar en cualquier PC con Windows sin dejar rastro y manteniendo todas tus herramientas organizadas en un subdirectorio.
 
+Nota: Esto requiere de un pendrive USB3 o mejor para funcionar de forma razonable, sin embargo, lo que podes hacer es copiar todo a una carpeta de la computadora y ejecutar los scripts ahí. Si optas por este camino, no te olvides de limpiar los datos personales al terminar.
+
 ---
 
 ## 🚀 1. Instalación Inicial
@@ -77,12 +79,7 @@ Los binarios (`tools/`) y proyectos (`workspace/`) **NO** se eliminan.
 
 ## 🧹 4. Limpieza de Credenciales (Antes de retirar el USB)
 
-Si usaste el USB en una PC que no es tuya, ejecutá **`limpiar_credenciales.bat`** antes de desconectarlo. Este script elimina cualquier rastro de credenciales de la PC host:
-
-- Configuración y caché de GitHub CLI
-- Git Credential Manager
-- Archivos SSH temporales y known_hosts
-- Caché de credenciales Git en `%TEMP%`
+Si usaste el entorno en una PC que no es tuya, ejecutá **`limpiar_datos.bat`** antes de apagar la computadora. Este script elimina cualquier rastro de credenciales de la PC host:
 
 No modifica configuraciones permanentes de la PC, solo borra archivos temporales y caches generados durante la sesión.
 
